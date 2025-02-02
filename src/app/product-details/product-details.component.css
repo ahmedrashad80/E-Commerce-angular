@@ -1,0 +1,47 @@
+.product-thumbnail img {
+  max-width: 100%;
+  border-radius: 10px;
+
+  background-color: rgb(145, 138, 138);
+}
+
+.btn-custom {
+  border-radius: 25px;
+  padding: 10px 20px;
+}
+
+.rating {
+  color: #ffc107;
+}
+
+.img-thumbnail {
+  border-radius: 5px;
+}
+.low-stock {
+  color: white;
+  background-color: #c81e1e;
+  font-weight: bold;
+  font-size: 14px;
+  border: 1px solid #333;
+  border-radius: 7px;
+  padding: 3px;
+  margin: 0 1rem;
+}
+.instock {
+  color: white;
+  background-color: #4caf50;
+  font-weight: bold;
+  font-size: 14px;
+  border: 1px solid #333;
+  border-radius: 7px;
+  padding: 3px;
+  margin: 0 1rem;
+}
+.category {
+  font-weight: bold;
+  border: 1px solid #333;
+  border-radius: 7px;
+  padding: 3px;
+  background-color: #f5eded;
+  margin-right: 1rem;
+}

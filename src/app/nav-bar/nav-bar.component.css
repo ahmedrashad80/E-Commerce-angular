@@ -1,0 +1,16 @@
+a {
+  text-decoration: none;
+}
+span {
+  top: -50%;
+  right: -34%;
+  background-color: rgb(225 216 216);
+  border-radius: 50%;
+  padding: 0px 5px;
+  color: #970b0f;
+  font-weight: bold;
+}
+
+.active_link {
+  color: #970b0f !important;
+}

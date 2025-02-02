@@ -1,0 +1,39 @@
+.container {
+  max-width: 900px;
+  margin: auto;
+}
+.wrapper {
+  background-color: rgb(148, 150, 152);
+}
+h1 {
+  height: 8rem;
+  text-transform: uppercase;
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  background: linear-gradient(to right, #b64c31, #b78b5f);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.card {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 0.2rem;
+}
+
+.img-fluid {
+  object-fit: cover;
+  height: 100px;
+  /* background-color: rgb(172, 174, 175); */
+}
+.card-body i {
+  cursor: pointer;
+}
+
+.card-body i:hover {
+  color: black;
+}

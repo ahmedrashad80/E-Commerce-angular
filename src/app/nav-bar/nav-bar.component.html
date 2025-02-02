@@ -1,0 +1,39 @@
+<nav class="navbar navbar-light bg-light">
+  <div class="container-fluid">
+    <a
+      class="navbar-brand mx-5"
+      routerLink="/"
+      routerLinkActive="active_link"
+      [routerLinkActiveOptions]="{ exact: true }"
+      >Navbar</a
+    >
+    <form class="d-flex mx-5">
+      <a
+        class="m-2 text-dark"
+        routerLink="/register"
+        routerLinkActive="active_link"
+        type="submit"
+        >Register</a
+      >
+      <a
+        class="m-2 text-dark"
+        routerLink="/login"
+        routerLinkActive="active_link"
+        type="submit"
+        >Login</a
+      >
+      <a
+        routerLink="/cart"
+        class="m-2 position-relative"
+        data-toggle="modal"
+        data-target="#cartModal"
+      >
+        <i
+          class="fas fa-shopping-cart fa-xl text-info"
+          routerLinkActive="active_link"
+        ></i>
+        <span class="position-absolute">{{ cart }}</span>
+      </a>
+    </form>
+  </div>
+</nav>

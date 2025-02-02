@@ -1,0 +1,120 @@
+<div class="container">
+  <form [formGroup]="registerForm" (ngSubmit)="handleSubmitForm()">
+    <h2 class="mb-1">Register</h2>
+    <hr class="border border-dark border-2 my-1" />
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        formControlName="name"
+      />
+      @if(formControls["name"].invalid && formControls["name"].touched){
+
+      <div id="emailHelp" class="form-text text-danger">
+        @if(formControls["name"].hasError("required")){
+        <span> *required</span>
+        }@else if (formControls["name"].hasError("minlength")){
+        <span> *Please enter at least 5 letters.</span>
+        }
+      </div>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        formControlName="email"
+      />
+      @if(formControls["email"].invalid && formControls["email"].touched){
+
+      <div id="emailHelp" class="form-text text-danger">
+        @if(formControls["email"].hasError("required")){
+        <span> *required</span>
+        }@else if (formControls["email"].hasError("pattern")){
+        <span> *Please enter a valid email address.</span>
+        }
+      </div>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">User Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        formControlName="userName"
+      />
+      @if(formControls["userName"].invalid && formControls["userName"].touched){
+
+      <div class="form-text text-danger">
+        @if(formControls["userName"].hasError("required")){
+        <span> *required</span>
+        }@else if (formControls["userName"].hasError("required")){
+        <span> *user name is required.</span>
+        }@else if (formControls["userName"].hasError("pattern")){
+        <span> *Please enter a valid userName without space.</span>
+        }@else if (formControls["userName"].hasError("minlength")){
+        <span> *Please enter at least 5 letters.</span>
+
+        }
+      </div>
+      }
+    </div>
+
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="exampleInputPassword1"
+        formControlName="password"
+      />
+      @if(formControls["password"].invalid && formControls["password"].touched){
+
+      <div class="form-text text-danger">
+        @if(formControls["password"].hasError("required")){
+        <span> *required</span>
+        }@else if (formControls["password"].hasError("minlength")){
+        <span> *Please enter at least 8 letters.</span>
+
+        }@else if (formControls["password"].hasError("pattern")){
+        <span> *you should have strong password like Ahmed123$</span>
+
+        }
+      </div>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label"
+        >Confirm Password</label
+      >
+      <input
+        type="password"
+        class="form-control"
+        id="exampleInputPassword1"
+        formControlName="confirmPassword"
+      />
+      @if(formControls["confirmPassword"].invalid &&
+      formControls["confirmPassword"].touched){
+
+      <div id="emailHelp" class="form-text text-danger">
+        @if(formControls["confirmPassword"].hasError("required")){
+        <span> *required</span>
+        }
+      </div>
+      } @if(registerForm.hasError('passwordMismatch') && registerForm.touched){
+      <div class="form-text text-danger">
+        <span> *Passwords do not match</span>
+      </div>
+      }
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

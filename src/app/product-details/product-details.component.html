@@ -1,0 +1,120 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 text-center">
+      <div class="product-thumbnail">
+        <img
+          [src]="product!.images[0]"
+          alt="Product Image"
+          class="img-fluid rounded"
+        />
+      </div>
+      <div class="images-container d-flex justify-content-center mt-3 gap-2">
+        @for(img of product!.images; track product!.id){
+
+        <img
+          [src]="img"
+          alt="Thumbnail"
+          class="img-thumbnail"
+          style="width: 120px; height: 120px; cursor: pointer"
+        />
+        }
+      </div>
+    </div>
+
+    <!-- Product Details Section -->
+    <div class="col-md-6">
+      <h2>{{ product!.title }}</h2>
+      <p class="text-muted">{{ product!.description }}</p>
+      <hr />
+
+      <div class="d-flex align-items-center mb-3">
+        <span class="rating me-2">
+          @for(star of 5 | rate : product!.rating ; track $index){
+          <i
+            class="fas"
+            [class.fa-star]="star === 'full'"
+            [class.fa-star-half-alt]="star === 'half'"
+            [class.fa-star-o]="star === 'empty'"
+            style="color: #ffc107"
+          ></i>
+          }
+        </span>
+        <small>({{ product!.rating }})</small>
+      </div>
+      @if(product!.discountPercentage){
+      <h3 class="text-success">
+        ${{ product!.price | discount : product!.discountPercentage }} |
+        <span class="text-muted text-decoration-line-through"
+          >${{ product!.price }}</span
+        >
+      </h3>
+
+      <p>
+        <span class="text-muted">Discount: </span>
+        <span class="text-danger">{{ product!.discountPercentage }}%</span>
+      </p>
+      }@else {
+      <h3 class="text-success">${{ product!.price }}</h3>
+      <p class="text-muted">No Discount</p>
+      }
+
+      <hr />
+      <!-- more information (catagory and brand) -->
+      <div class="product-details-container p-4 rounded-lg shadow-md bg-white">
+        <div class="product-info">
+          <span class="category">Category</span>
+          <span class="text-secondary fw-bold">
+            {{ product!.category }}
+          </span>
+        </div>
+        <div class="product-info mt-4">
+          <span class="category"> Brand </span>
+          <span class="text-secondary fw-bold">
+            {{ product!.brand || "no brand " }}
+          </span>
+        </div>
+      </div>
+      <hr />
+      <p>
+        <strong>Availability: {{ product!.stock }}</strong>
+        <span [ngClass]="product!.stock > 10 ? 'instock' : 'low-stock'">
+          {{ product!.stock > 10 ? "In Stock" : "Low Stock" }}
+        </span>
+      </p>
+
+      <div class="d-flex align-items-center my-3">
+        <button
+          class="btn btn-outline-primary btn-sm me-2"
+          (click)="decreaseOne(product!.id)"
+        >
+          -
+        </button>
+        <input
+          type="text"
+          class="form-control text-center"
+          [value]="product!.quantity || 0"
+          style="width: 50px"
+        />
+        <button
+          class="btn btn-outline-primary btn-sm ms-2"
+          (click)="increaseOne(product!.id)"
+        >
+          +
+        </button>
+      </div>
+
+      <p>
+        <strong>Minimum Order Quantity:</strong>
+        {{ product!.minimumOrderQuantity }}
+      </p>
+
+      <button class="btn btn-success btn-custom me-3">Buy Now</button>
+      <button
+        class="btn btn-outline-secondary btn-custom"
+        (click)="addToCart(product!.id)"
+      >
+        Add to Cart
+      </button>
+    </div>
+  </div>
+</div>
