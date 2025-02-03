@@ -47,8 +47,9 @@ export class ProductDetailsComponent {
   }
 
   addToCart(id: number) {
-    const product = this.products.find((p) => p.id === id);
+    // const product = this.products.find((p) => p.id === id);
     const existingIntoCart = this.cartItems.find((c) => c.id === id);
+    const product = this.product;
 
     if (product) {
       product.addedToCart = true;
@@ -61,7 +62,7 @@ export class ProductDetailsComponent {
     this.cartService.changeCart(this.cartItems);
   }
   decreaseOne(id: number) {
-    const product = this.products.find((p) => p.id === id);
+    const product = this.product;
     const existingIntoCart = this.cartItems.find((c) => c.id === id);
 
     if (existingIntoCart) {
@@ -82,7 +83,7 @@ export class ProductDetailsComponent {
   }
 
   increaseOne(id: number) {
-    const product = this.products.find((p) => p.id === id);
+    const product = this.product;
     const existingIntoCart = this.cartItems.find((c) => c.id === id);
 
     if (product) {
