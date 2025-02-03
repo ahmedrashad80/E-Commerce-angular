@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CartServiceService } from './../services/cart-service.service';
+import { Product } from '../types/product';
 @Component({
   selector: 'app-nav-bar',
   imports: [RouterLink, RouterLinkActive],
@@ -9,10 +10,10 @@ import { CartServiceService } from './../services/cart-service.service';
 })
 export class NavBarComponent {
   constructor(private cartService: CartServiceService) {}
-  cart = 0;
+  cartItems: Product[] = [];
   ngOnInit() {
-    this.cartService.getCartNumber().subscribe((cartItems) => {
-      this.cart = cartItems;
+    this.cartService.getCart().subscribe((cartItems) => {
+      this.cartItems = cartItems;
     });
   }
 }
