@@ -1,0 +1,95 @@
+<div class="container mt-4">
+  <nav aria-label="Page navigation" class="mt-4">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <button class="page-link" (click)="goToPage(currentPage - 1)">
+          Previous
+        </button>
+      </li>
+      @if( totalPages > 6){
+      <li class="page-item" [class.active]="currentPage === 1">
+        <button class="page-link" (click)="goToPage(1)">{{ 1 }}</button>
+      </li>
+      <li class="page-item" [class.active]="currentPage === 2">
+        <button class="page-link" (click)="goToPage(2)">{{ 2 }}</button>
+      </li>
+
+      @if(currentPage < 2){
+      <li class="page-item">
+        <button class="page-link">.....</button>
+      </li>
+      } @if(currentPage == 2){
+      <li class="page-item" [class.active]="currentPage === currentPage + 1">
+        <button class="page-link" (click)="goToPage(currentPage + 1)">
+          {{ currentPage + 1 }}
+        </button>
+      </li>
+      <li class="page-item">
+        <button class="page-link">.....</button>
+      </li>
+      } @if(currentPage >= 3 && currentPage <=pageRange.length - 3){
+      @if(currentPage != 3 ){
+      <li class="page-item">
+        <button class="page-link" (click)="goToPage(currentPage)">....</button>
+      </li>
+      <li class="page-item" [class.active]="currentPage === currentPage - 1">
+        <button class="page-link" (click)="goToPage(currentPage - 1)">
+          {{ currentPage - 1 }}
+        </button>
+      </li>
+      }
+      <li class="page-item" [class.active]="currentPage === currentPage">
+        <button class="page-link" (click)="goToPage(currentPage)">
+          {{ currentPage }}
+        </button>
+      </li>
+      <li class="page-item" [class.active]="currentPage === currentPage + 1">
+        <button class="page-link" (click)="goToPage(currentPage + 1)">
+          {{ currentPage + 1 }}
+        </button>
+      </li>
+      <li class="page-item">
+        <button class="page-link">.....</button>
+      </li>
+      } @if(currentPage == pageRange.length -2){
+      <li class="page-item">
+        <button class="page-link">.....</button>
+      </li>
+      <li class="page-item" [class.active]="currentPage === currentPage">
+        <button class="page-link" (click)="goToPage(currentPage)">
+          {{ currentPage }}
+        </button>
+      </li>
+      } @if(currentPage == pageRange.length -1){
+      <li class="page-item">
+        <button class="page-link">.....</button>
+      </li>
+
+      }
+      <li
+        class="page-item"
+        [class.active]="currentPage === pageRange.length - 1"
+      >
+        <button class="page-link" (click)="goToPage(pageRange.length - 1)">
+          {{ pageRange.length - 1 }}
+        </button>
+      </li>
+      <li class="page-item" [class.active]="currentPage === pageRange.length">
+        <button class="page-link" (click)="goToPage(pageRange.length)">
+          {{ pageRange.length }}
+        </button>
+      </li>
+      }@else{ @for(page of pageRange; track $index){
+      <li class="page-item" [class.active]="currentPage === page">
+        <button class="page-link" (click)="goToPage(page)">{{ page }}</button>
+      </li>
+      } }
+
+      <li class="page-item" [class.disabled]="currentPage === totalPages">
+        <button class="page-link" (click)="goToPage(currentPage + 1)">
+          Next
+        </button>
+      </li>
+    </ul>
+  </nav>
+</div>

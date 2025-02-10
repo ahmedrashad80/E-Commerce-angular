@@ -14,4 +14,9 @@ export class ProductRequestService {
   getOneProduct(id: string) {
     return this.http.get<Product>(`https://dummyjson.com/products/${id}`);
   }
+  getNumberOfProducts(page: number, limit: number) {
+    return this.http.get<ProductsResponse>(
+      `https://dummyjson.com/products?limit=${limit}&skip=${limit * (page - 1)}`
+    );
+  }
 }

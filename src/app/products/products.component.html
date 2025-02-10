@@ -1,8 +1,11 @@
 <div class="products-container">
-
   <app-card
     [productsItems]="products"
     (productClicked)="productId($event)"
     (addToCart)="addCart($event)"
   ></app-card>
+  <app-pagination
+    [totalPages]="paginationPages"
+    (sendCurrentPage)="currentPage($event)"
+  ></app-pagination>
 </div>
